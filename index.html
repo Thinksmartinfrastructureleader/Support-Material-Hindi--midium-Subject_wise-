@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engage Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{display:flex;min-height:100vh;background:#f0f4f8;overflow-x:hidden}
+
+/* Splash */
+#splash{
+  position:fixed;inset:0;
+  background:linear-gradient(135deg,#0077ff,#00d4ff);
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  color:#fff;z-index:2000;
+}
+#splash .logo{
+  width:130px;height:130px;background:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+#splash img{width:100%}
+
+/* Sidebar */
+.sidebar{
+  position:fixed;left:-250px;top:0;
+  width:250px;height:100%;
+  background:#2575fc;color:#fff;
+  padding-top:20px;transition:.3s;z-index:1000;
+}
+.sidebar.active{left:0}
+.sidebar a{
+  display:block;padding:15px 20px;
+  color:#fff;text-decoration:none;font-weight:600
+}
+.sidebar a:hover{background:#1450a1}
+
+/* Toggle */
+#sidebarToggle{
+  position:fixed;top:20px;left:20px;
+  background:#2575fc;color:#fff;
+  border:none;padding:10px 15px;border-radius:8px;
+  z-index:1100;cursor:pointer
+}
+
+/* Main */
+.main-content{flex:1;padding:30px}
+.page{display:none}
+.page.active{display:block}
+
+/* Cards */
+.cards{
+  display:flex;flex-wrap:wrap;
+  gap:25px;justify-content:center;margin-top:20px
+}
+.card{
+  background:#fff;padding:20px;width:280px;
+  border-radius:15px;text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.1)
+}
+.card img{width:100px;margin-bottom:15px}
+.card a{color:#2575fc;font-weight:600;text-decoration:none}
+
+/* Footer */
+#x{text-align:center;margin-top:30px;font-weight:bold;color:brown}
+
+/* About */
+.about-card{
+  max-width:900px;margin:40px auto;background:#fff;
+  border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.15);
+  display:flex;flex-wrap:wrap
+}
+.about-image{flex:1;min-width:280px}
+.about-image img{width:100%;height:100%;object-fit:cover}
+.about-content{flex:2;padding:30px}
+.result-img{max-width:600px;margin:auto;display:block}
+
+@media(max-width:768px){.about-card{flex-direction:column}}
+</style>
+</head>
+
+<body>
+
+<div id="splash">
+  <div class="logo">
+    <img src="https://i.ibb.co/QvVy8c7Z/20251023-194121.png">
+  </div>
+  <h1>Engage Pro</h1>
+</div>
+
+<div class="sidebar" id="sidebar">
+  <a href="#" data-target="dashboard">Dashboard</a>
+  <a href="#" data-target="about">About</a>
+  <a href="#" data-target="Circular">Latest Circular</a>
+  <a href="#" data-target="Result">Results</a>
+  <a href="#" data-target="sample-paper">Sample Paper</a>
+  <a href="#" data-target="previous-paper">Previous Paper</a>
+  <a href="#" data-target="model">Toppers Answersheet</a>
+  <a href="#" data-target="support-material">Support Material</a>
+  <a href="#" data-target="date-sheet">Date Sheet</a>
+</div>
+
+<button id="sidebarToggle">☰ Menu</button>
+
+<div class="main-content">
+
+<!-- Dashboard -->
+<div id="dashboard" class="page active">
+  <h1>Dashboard</h1>
+
+  <div class="cards">
+    <div class="card">
+      <img src="https://i.ibb.co/cKZsRBcz/20251023-131647.jpg">
+      <h3>Thinkora Study</h3>
+      <a target="_blank" href="#">Apply Now</a>
+    </div>
+
+    <div class="card">
+      <img src="https://i.ibb.co/cKZsRBcz/20251023-131647.jpg">
+      <h3>Group Discussion</h3>
+      <a target="_blank" href="#">Apply Now</a>
+    </div>
+
+    <div class="card">
+      <img src="https://i.ibb.co/0VXmnZQt/20251023-191801.png">
+      <h3>Infinity Gaming Institute</h3>
+      <a target="_blank" href="#">Apply Now</a>
+    </div>
+  </div>
+
+  <footer id="x">©2025 Engage Pro™</footer>
+</div>
+
+<!-- Other pages same as before -->
+<div id="about" class="page">ABOUT PAGE</div>
+<div id="Result" class="page">RESULT PAGE</div>
+<div id="sample-paper" class="page"><iframe src="https://www.cbse.gov.in/cbsenew/samplepaper.html" width="100%" height="600"></iframe></div>
+<div id="previous-paper" class="page"><iframe src="https://www.cbse.gov.in/cbsenew/question-paper.html" width="100%" height="600"></iframe></div>
+<div id="support-material" class="page"><iframe src="https://edustud.nic.in/edu/support_material_2024_25.html" width="100%" height="600"></iframe></div>
+<div id="model" class="page"><iframe src="https://www.cbse.gov.in/cbsenew/model-answer.html" width="100%" height="600"></iframe></div>
+<div id="Circular" class="page"><iframe src="https://www.cbse.gov.in/cbsenew/examination_Circular.html" width="100%" height="600"></iframe></div>
+<div id="date-sheet" class="page"><iframe src="https://thinksmartinfrastructureleader.github.io/Date-Sheet-exam/" width="100%" height="600"></iframe></div>
+
+</div>
+
+<script>
+const splash=document.getElementById("splash");
+const sidebar=document.getElementById("sidebar");
+const toggle=document.getElementById("sidebarToggle");
+
+window.onload=()=>setTimeout(()=>splash.style.display="none",2000);
+toggle.onclick=()=>sidebar.classList.toggle("active");
+
+document.querySelectorAll(".sidebar a").forEach(link=>{
+  link.onclick=e=>{
+    e.preventDefault();
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+    document.getElementById(link.dataset.target).classList.add("active");
+    sidebar.classList.remove("active");
+  }
+});
+</script>
+
+</body>
+</html>
